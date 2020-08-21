@@ -12,7 +12,7 @@ import { localsMiddleware } from './middleware';
 
 const app = express();
 
-app.use(helmet()); // 보안을 위한 middleware
+app.use(helmet({contentSecurityPolicy:false})); // 보안을 위한 middleware
 app.set('view engine', 'pug');
 app.use(cookieParser());
 app.use(bodyParser.json());
