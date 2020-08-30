@@ -21,6 +21,17 @@
     "path-to-regexp": "^6.1.0",
     "pug": "^3.0.0"
   },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "scripts": {
     "start": "nodemon --exec babel-node init.js --delay 2"
   },

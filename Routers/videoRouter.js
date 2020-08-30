@@ -18,8 +18,9 @@ videoRouter.post(routes.upload, uploadVideo, postUpload);
 //Edit Video
 videoRouter.get(routes.editVideo(), getEditVideo);
 videoRouter.post(routes.editVideo(), postEditVideo);
+
 //Delete video
-videoRouter.get(routes.deleteVideo(), deleteVideo);
+videoRouter.post(routes.deleteVideo(), deleteVideo);
 
 //video detail
 videoRouter.get(routes.videoDetail(), videoDetail);
