@@ -1,20 +1,25 @@
 import routes from '../routes';
+import User from '../models/User';
 
 export const getJoin = (req, res) => {
   res.render('Join', { pageTitle: 'Join' });
 };
 
-export const postJoin = (req, res) => {
+export const postJoin = async (req, res) => {
   const {
     body: { name, email, password, password2 },
   } = req;
-  if (name === '' || email === '') {
-    console.log('빈칸을 채우세요');
-  }
+
   if (password !== password2) {
     res.status(400);
     res.render('Join', { pageTitle: 'Join' });
   } else {
+    try {
+      const user = await User({ name, email });
+      await User.register(user, password);
+    } catch (error) {
+      console.log('error: ', error);
+    }
     res.redirect(routes.home);
   }
 };
