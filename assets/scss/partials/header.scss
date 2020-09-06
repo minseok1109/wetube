@@ -23,9 +23,13 @@
       }
       ul {
         display: flex;
-        color: white;
         font-weight: 600;
         text-transform: uppercase;
+        li {
+          a {
+            color: white;
+          }
+        }
         li:not(:last-child) {
           margin-right: 15px;
         }
