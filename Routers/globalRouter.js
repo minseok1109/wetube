@@ -9,6 +9,7 @@ import {
   postLogin,
   githubLogin,
   postGithubLogin,
+  getMe,
 } from '../controllers/userController';
 import { onlyPublic, onlyPrivate } from '../middleware';
 import passport from 'passport';
@@ -32,5 +33,6 @@ globalRouter.get(
   passport.authenticate('github', { failureRedirect: '/login' }),
   postGithubLogin
 );
+globalRouter.get(routes.me, getMe);
 
 export default globalRouter;

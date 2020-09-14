@@ -70,7 +70,6 @@ export const getEditVideo = async (req, res) => {
   } catch (error) {
     res.redirect(routes.home);
   }
-  res.render('editVideo', { pageTitle: 'editVideo' });
 };
 
 export const postEditVideo = async (req, res) => {

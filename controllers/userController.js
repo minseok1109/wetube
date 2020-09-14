@@ -37,14 +37,34 @@ export const postLogin = passport.authenticate('local', {
 });
 
 //Github Log in
-export const githubLoginCallback = (accessToken, refreshToken, profile, cb) => {
-  console.log(accessToken, refreshToken, profile, cb);
+export const githubLoginCallback = async (_, __, profile, cb) => {
+  const {
+    _json: { id, avatarUrl, name },
+  } = profile;
+  const { value: email } = profile.emails.filter((item) => item.primary)[0];
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      user.githubId = id;
+      user.save();
+      return cb(null, user);
+    }
+    const newUser = await User.create({
+      email,
+      name,
+      githubId: id,
+      avatarUrl,
+    });
+    return cb(null, newUser);
+  } catch (error) {
+    return cb(error);
+  }
 };
 
 export const githubLogin = passport.authenticate('github');
 
 export const postGithubLogin = (req, res) => {
-  res.send(routes.home);
+  res.redirect(routes.home);
 };
 
 //Log Out
@@ -57,8 +77,12 @@ export const logout = (req, res) => {
 export const users = (req, res) => res.render('users', { pageTitle: 'Users' });
 
 //User Detail
-export const userDetail = (req, res) =>
-  res.render('userDetail', { pageTitle: 'user Detail' });
+export const getMe = (req, res) => {
+  res.render('userDetail', { pageTitle: 'user Detail', user: req.user });
+};
+export const userDetail = (req, res) => {
+  res.render('userDetail', { pageTitle: 'user Detail', user: req.user });
+};
 
 //Edit Profile
 export const editProfile = (req, res) =>

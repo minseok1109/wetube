@@ -405,6 +405,9 @@ input[type='submit'] {
     .social-login button span {
       margin-right: 10px;
       font-size: 20px; }
+    .social-login button a {
+      color: white;
+      text-decoration: none; }
   .social-login .social-login--github {
     background-color: #444444;
     color: white; }
