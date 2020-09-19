@@ -92,10 +92,10 @@ export const logout = (req, res) => {
 //Users
 export const users = (req, res) => res.render('users', { pageTitle: 'Users' });
 
-//User Detail
+// //User Detail
 export const getMe = async (req, res) => {
-  let user = req.user;
-  res.render('userDetail', { pageTitle: 'User Detail', user });
+  const user = await User.findById(req.user.id).populate('videos');
+  res.render('userDetail', { pageTitle: 'user Detail', user });
 };
 
 export const userDetail = async (req, res) => {
@@ -103,7 +103,7 @@ export const userDetail = async (req, res) => {
     params: { id },
   } = req;
   try {
-    const user = await User.findById(id);
+    const user = await User.findById(id).populated('videos');
     res.render('userDetail', { pageTitle: 'user Detail', user });
   } catch (error) {
     res.redirect(routes.home);
