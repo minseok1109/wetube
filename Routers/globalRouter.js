@@ -9,9 +9,9 @@ import {
   postLogin,
   githubLogin,
   postGithubLogin,
-  getMe,
   facebookLogin,
   postFacebookLogin,
+  getMe,
 } from '../controllers/userController';
 import { onlyPublic, onlyPrivate } from '../middleware';
 import passport from 'passport';

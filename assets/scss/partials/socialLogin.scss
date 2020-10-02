@@ -5,6 +5,7 @@
   width: 100%;
   button {
     width: 100%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     max-width: 320px;
     display: flex;
     justify-content: center;
@@ -28,5 +29,11 @@
   .social-login--facebook {
     background-color: #3a5998;
     color: white;
+  }
+  .social-login--facebook:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+  .social-login--github:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   }
 }

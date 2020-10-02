@@ -94,8 +94,12 @@ export const users = (req, res) => res.render('users', { pageTitle: 'Users' });
 
 // //User Detail
 export const getMe = async (req, res) => {
-  const user = await User.findById(req.user.id).populate('videos');
-  res.render('userDetail', { pageTitle: 'user Detail', user });
+  try {
+    const user = await User.findById(req.user.id).populate('videos');
+    res.render('userDetail', { pageTitle: `${user.name}`, user });
+  } catch (error) {
+    res.redirect(routes.home);
+  }
 };
 
 export const userDetail = async (req, res) => {
@@ -104,8 +108,9 @@ export const userDetail = async (req, res) => {
   } = req;
   try {
     const user = await User.findById(id).populate('videos');
-    res.render('userDetail', { pageTitle: 'user Detail', user });
+    res.render('userDetail', { pageTitle: `${user.name}`, user });
   } catch (error) {
+    // req.flash('error', 'User not found');
     res.redirect(routes.home);
   }
 };
