@@ -1,0 +1,11 @@
+.video__comments {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  .video__comment-number {
+    margin-bottom: 5px;
+  }
+}
+
+
