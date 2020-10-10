@@ -61,7 +61,6 @@ export const videoDetail = async (req, res) => {
     const createCommentId = video.comments.map((element) =>
       String(element.creator)
     );
-    console.log(video);
     res.render('videoDetail', {
       pageTitle: `${video.title}`,
       video,
@@ -152,7 +151,8 @@ export const postAddComment = async (req, res) => {
       text: comment,
       creator: user.id,
     });
-    // res.json(newComment.creator);
+    console.log(res.json(newComment.creator));
+
     video.comments.push(newComment.id);
     video.save();
   } catch (error) {

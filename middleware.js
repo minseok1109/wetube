@@ -17,6 +17,7 @@ const multerVideo = multer({
     bucket: 'bangtube/video',
   }),
 });
+
 const multerAvatar = multer({
   storage: multerS3({
     s3,
