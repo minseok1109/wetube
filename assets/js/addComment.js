@@ -3,6 +3,7 @@ import axios from 'axios';
 const addCommentForm = document.getElementById('jsAddComment');
 const commentList = document.getElementById('jsCommentList');
 const CommentNumber = document.getElementById('jsCommentNumber');
+const deleteBtn = commentList.querySelector('button');
 
 const increaseNumber = () => {
   CommentNumber.innerHTML = parseInt(CommentNumber.innerHTML, 10) + 1;
@@ -27,9 +28,12 @@ const sendComment = async (comment) => {
   if (response.status === 200) {
     addComment(comment);
   }
-  if (response.user.id === null || undefined) {
-    alert('댓글을 달려면 로그인하세요');
-  }
+};
+
+const deleteComment = () => {
+  const videoId = window.location.href.split('/videos/')[1];
+  const commentId = deleteBtn.dataset.id;
+  axios.get(`/api/${videoId}/${commentId}/delete`);
 };
 
 const handleSubmit = (event) => {
@@ -42,6 +46,7 @@ const handleSubmit = (event) => {
 
 function init() {
   addCommentForm.addEventListener('submit', handleSubmit);
+  deleteBtn.addEventListener('click', deleteComment);
 }
 
 if (addCommentForm) {

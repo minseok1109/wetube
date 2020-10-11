@@ -30,4 +30,7 @@ block content
                 each comment in video.comments.reverse()
                     li
                         span=comment.text
+                        if String(comment.creator) === loggedUser.id
+                            a(href=routes.deleteComment(comment.id))
+                                button(data-id=comment.id) ❌
                         

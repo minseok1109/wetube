@@ -58,13 +58,10 @@ export const videoDetail = async (req, res) => {
     const video = await Video.findById(id)
       .populate('creator')
       .populate('comments');
-    const createCommentId = video.comments.map((element) =>
-      String(element.creator)
-    );
+
     res.render('videoDetail', {
       pageTitle: `${video.title}`,
       video,
-      createCommentId,
     });
   } catch (error) {
     console.log('error: ', error);
@@ -151,10 +148,29 @@ export const postAddComment = async (req, res) => {
       text: comment,
       creator: user.id,
     });
-    console.log(res.json(newComment.creator));
-
     video.comments.push(newComment.id);
     video.save();
+  } catch (error) {
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+//delete Comment
+export const postDeleteComment = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  try {
+    const video = await Video.findById(id).populate('comments');
+    for (let value of video.comments) {
+      if (value.creator !== req.user.id) {
+        throw Error();
+      } else {
+        await Comment.findOneAndRemove({ _id: value.id });
+      }
+    }
   } catch (error) {
     res.status(400);
   } finally {
