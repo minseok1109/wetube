@@ -31,9 +31,12 @@ const sendComment = async (comment) => {
 };
 
 const deleteComment = () => {
-  const videoId = window.location.href.split('/videos/')[1];
   const commentId = deleteBtn.dataset.id;
-  axios.get(`/api/${videoId}/${commentId}/delete`);
+  // const videoId = videoInfo.dataset.id;
+  axios({
+    method: 'POST',
+    url: `/api/${commentId}/delete`,
+  });
 };
 
 const handleSubmit = (event) => {

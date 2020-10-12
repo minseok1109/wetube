@@ -19,10 +19,10 @@ export const search = async (req, res) => {
   let videos = [];
   try {
     videos = await Video.find({ title: { $regex: searchBy, $options: 'i' } });
+    res.render('search', { pageTitle: 'Search', searchBy, videos });
   } catch (error) {
     console.log(error);
   }
-  res.render('search', { pageTitle: 'Search', searchBy, videos });
 };
 
 //Videos
@@ -109,7 +109,7 @@ export const deleteVideo = async (req, res) => {
     if (video.creator.id !== req.user.id) {
       throw Error();
     } else {
-      await Video.findOneAndRemove({ _id: id });
+      await Video.findOneAndDelete({ _id: id });
     }
   } catch (error) {
     console.log(error);
@@ -162,15 +162,9 @@ export const postDeleteComment = async (req, res) => {
   const {
     params: { id },
   } = req;
+  console.log(req);
   try {
-    const video = await Video.findById(id).populate('comments');
-    for (let value of video.comments) {
-      if (value.creator !== req.user.id) {
-        throw Error();
-      } else {
-        await Comment.findOneAndRemove({ _id: value.id });
-      }
-    }
+    await Comment.findOneAndDelete({ _id: id });
   } catch (error) {
     res.status(400);
   } finally {

@@ -31,7 +31,7 @@ const FB_CALLBACK = '/auth/facebook/callback';
 const API = '/api';
 const REGISTER_VIEW = '/:id/view';
 const ADD_COMMENT = '/:id/comment';
-const DELETE_COMMENT = '/:id/:commentId/delete';
+const DELETE_COMMENT = '/:id/delete';
 
 const routes = {
   home: HOME,
@@ -82,9 +82,9 @@ const routes = {
   addComment: ADD_COMMENT,
   deleteComment: (id) => {
     if (id) {
-      return `/api/:id/${id}/delete`;
+      return `/api/${id}/delete`;
     } else {
-      DELETE_COMMENT;
+      return DELETE_COMMENT;
     }
   },
 };

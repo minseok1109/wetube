@@ -11,6 +11,6 @@ const apiRouter = express.Router();
 
 apiRouter.post(routes.registerView, postRegisterView);
 apiRouter.post(routes.addComment, postAddComment);
-apiRouter.get(routes.deleteComment, postDeleteComment);
+apiRouter.post(routes.deleteComment(), postDeleteComment);
 
 export default apiRouter;

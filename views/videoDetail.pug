@@ -2,7 +2,7 @@ extends layouts/main
 block content
     .video-detail__container
         video(src=video.fileUrl, controls=true, width="1300")
-        .video__info
+        .video__info(data-videoId=video.id)
             if  loggedUser && video.creator.id === loggedUser.id
                 a(href=routes.editVideo(video.id))
                     button Edit video
@@ -30,7 +30,7 @@ block content
                 each comment in video.comments.reverse()
                     li
                         span=comment.text
-                        if String(comment.creator) === loggedUser.id
-                            a(href=routes.deleteComment(comment.id))
-                                button(data-id=comment.id) ❌
+                        .deleteCommentBtn
+                            if loggedUser && String(comment.creator) ===  loggedUser.id
+                                    button(type='submit', data-id=comment.id) ❌
                         
