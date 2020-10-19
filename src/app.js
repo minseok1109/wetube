@@ -1,4 +1,6 @@
-import 'core-js';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+import path from 'path';
 import express from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
@@ -21,11 +23,11 @@ dotenv.config();
 const app = express();
 
 const CookieStore = MongoStore(session);
-
+console.log(__dirname);
 app.use(helmet({ contentSecurityPolicy: false })); // 보안을 위한 middleware
 app.set('view engine', 'pug');
-app.use('/uploads', express.static('uploads'));
-app.use('/static', express.static('static'));
+app.set('views', path.join(__dirname, '/views'));
+app.use('/static', express.static(path.join(__dirname, 'static')));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
