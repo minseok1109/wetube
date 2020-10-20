@@ -5,9 +5,9 @@ import Comment from '../models/comment';
 export const home = async (req, res) => {
   try {
     const videos = await Video.find({}).sort({ _id: -1 });
-    res.render('Home', { pageTitle: 'Home', videos });
+    res.render('home', { pageTitle: 'Home', videos });
   } catch (error) {
-    res.render('Home', { pageTitle: 'Home', videos: [] });
+    res.render('home', { pageTitle: 'Home', videos: [] });
   }
 };
 
@@ -58,7 +58,6 @@ export const videoDetail = async (req, res) => {
     const video = await Video.findById(id)
       .populate('creator')
       .populate('comments');
-
     res.render('videoDetail', {
       pageTitle: `${video.title}`,
       video,
@@ -162,7 +161,6 @@ export const postDeleteComment = async (req, res) => {
   const {
     params: { id },
   } = req;
-  console.log(req);
   try {
     await Comment.findOneAndDelete({ _id: id });
   } catch (error) {

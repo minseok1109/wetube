@@ -4,7 +4,7 @@ import passport from 'passport';
 
 //Join
 export const getJoin = (req, res) => {
-  res.render('Join', { pageTitle: 'Join' });
+  res.render('join', { pageTitle: 'Join' });
 };
 
 export const postJoin = async (req, res, next) => {
@@ -29,7 +29,7 @@ export const postJoin = async (req, res, next) => {
 
 //Log In
 export const getLogin = (req, res) =>
-  res.render('Login', { pageTitle: 'Log in' });
+  res.render('login', { pageTitle: 'Log in' });
 
 export const postLogin = passport.authenticate('local', {
   failureRedirect: routes.login,
@@ -57,6 +57,7 @@ export const githubLoginCallback = async (_, __, profile, cb) => {
     });
     return cb(null, newUser);
   } catch (error) {
+    console.log('error: ', error);
     return cb(error);
   }
 };
@@ -124,7 +125,6 @@ export const postEditProfile = async (req, res) => {
     body: { name, email },
     file,
   } = req;
-  console.log('req: ', req);
   try {
     await User.findByIdAndUpdate(req.user.id, {
       name,
