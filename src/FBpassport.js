@@ -13,7 +13,7 @@ passport.use(
     {
       clientID: process.env.FB_ID,
       clientSecret: process.env.FB_SECRET,
-      callbackURL: `https://calm-scrubland-53159.herokuapp.com/${routes.facebookCallback}`,
+      callbackURL: `https://calm-scrubland-53159.herokuapp.com${routes.facebookCallback}`,
       profileFields: ['id', 'displayName', 'photos', 'email'],
       scope: ['public_profile', 'email'],
     },
