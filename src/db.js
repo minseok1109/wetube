@@ -2,11 +2,14 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
 
-mongoose.connect(process.env.PRODUCTION ? process.env.MONGO_CLOUD_URL : null, {
-  useNewUrlParser: true,
-  useFindAndModify: false,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  process.env.PRODUCTION ? process.env.MONGO_CLOUD_URL : process.env.MONGO_URL,
+  {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+  }
+);
 
 const db = mongoose.connection;
 

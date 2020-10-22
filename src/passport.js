@@ -6,7 +6,7 @@ import {
   // facebookLoginCallback,
   githubLoginCallback,
 } from './controllers/userController';
-import routes from './routes';
+// import routes from './routes'
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -18,8 +18,8 @@ passport.use(
       clientID: process.env.GH_ID,
       clientSecret: process.env.GH_SECRET,
       callbackURL: process.env.PRODUCTION
-        ? `https://calm-scrubland-53159.herokuapp.com/${routes.githubCallback}`
-        : `http://localhost${routes.githubCallback}`,
+        ? process.env.GH_URL_PROD
+        : process.env.GH_URL,
       scope: 'user:email',
     },
     githubLoginCallback
