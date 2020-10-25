@@ -9,8 +9,6 @@ import {
   postLogin,
   githubLogin,
   postGithubLogin,
-  naverLogin,
-  postNaverLogin,
   getMe,
 } from '../controllers/userController';
 import { onlyPublic, onlyPrivate } from '../middleware';

@@ -27,10 +27,6 @@ const GITHUB_CALLBACK = '/auth/github/callback';
 const FB = '/auth/facebook';
 const FB_CALLBACK = '/auth/facebook/callback';
 
-//Naver
-const NAVER = '/auth/naver';
-const NV_CALLBACK = '/auth/naver/callback';
-
 //api
 const API = '/api';
 const REGISTER_VIEW = '/:id/view';
@@ -81,8 +77,6 @@ const routes = {
   me: ME,
   facebook: FB,
   facebookCallback: FB_CALLBACK,
-  naver: NAVER,
-  naverCallback: NV_CALLBACK,
   api: API,
   registerView: REGISTER_VIEW,
   addComment: ADD_COMMENT,

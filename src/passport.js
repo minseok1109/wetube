@@ -5,7 +5,6 @@ import { githubLoginCallback } from './controllers/userController';
 import dotenv from 'dotenv';
 dotenv.config();
 
-console.log(process.env.GH_URL_PROD);
 passport.use(User.createStrategy());
 
 passport.use(
@@ -13,9 +12,7 @@ passport.use(
     {
       clientID: process.env.GH_ID,
       clientSecret: process.env.GH_SECRET,
-      callbackURL: process.env.PRODUCTION
-        ? process.env.GH_URL_PROD
-        : process.env.GH_URL,
+      callbackURL: process.env.GH_URL_PROD,
       scope: 'user:email',
     },
     githubLoginCallback
