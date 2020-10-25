@@ -72,12 +72,9 @@ export const postGithubLogin = (req, res) => {
 
 export const naverLogin = passport.authenticate('naver');
 
-export const naverLoginCallback = (
-  accessToken,
-  refreshToken,
-  profile,
-  done
-) => {};
+export const naverLoginCallback = (_, __, profile, done) => {
+  console.log(profile, done);
+};
 
 export const postNaverLogin = (req, res) => {
   res.redirect(routes.home);

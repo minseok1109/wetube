@@ -12,7 +12,11 @@ passport.use(
     {
       clientID: process.env.NV_ID,
       clientSecret: process.env.NV_SECRET,
+      callbackURL: process.env.NV_URL,
     },
     naverLoginCallback
   )
 );
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
