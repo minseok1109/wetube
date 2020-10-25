@@ -23,9 +23,9 @@ const DELETE_VIDEO = '/:id/delete';
 const GITHUB = '/auth/github';
 const GITHUB_CALLBACK = '/auth/github/callback';
 
-//Facebook
-const FB = '/auth/facebook';
-const FB_CALLBACK = '/auth/facebook/callback';
+//Naver
+const NAVER = '/auth/naver';
+const NAVER_CALLBACK = '/auth/naver/callback';
 
 //api
 const API = '/api';
@@ -75,8 +75,8 @@ const routes = {
   github: GITHUB,
   githubCallback: GITHUB_CALLBACK,
   me: ME,
-  facebook: FB,
-  facebookCallback: FB_CALLBACK,
+  naver: NAVER,
+  naverCallback: NAVER_CALLBACK,
   api: API,
   registerView: REGISTER_VIEW,
   addComment: ADD_COMMENT,
