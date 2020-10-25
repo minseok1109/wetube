@@ -5,6 +5,7 @@ import { githubLoginCallback } from './controllers/userController';
 import dotenv from 'dotenv';
 dotenv.config();
 
+console.log(process.env.GH_URL_PROD);
 passport.use(User.createStrategy());
 
 passport.use(
