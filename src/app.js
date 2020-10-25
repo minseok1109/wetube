@@ -17,6 +17,7 @@ import apiRouter from './Routers/apiRouter';
 import routes from './routes';
 import { localsMiddleware } from './middleware';
 import './passport';
+import './Naverpassport';
 import dotenv from 'dotenv';
 dotenv.config();
 
