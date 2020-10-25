@@ -37,6 +37,8 @@ export const postLogin = passport.authenticate('local', {
 });
 
 //Github Log in
+export const githubLogin = passport.authenticate('github');
+
 export const githubLoginCallback = async (_, __, profile, cb) => {
   const {
     _json: { id, avatar_url, name },
@@ -62,25 +64,23 @@ export const githubLoginCallback = async (_, __, profile, cb) => {
   }
 };
 
-export const githubLogin = passport.authenticate('github');
-
 export const postGithubLogin = (req, res) => {
   res.redirect(routes.home);
 };
 
-//Facebook
-export const facebookLogin = passport.authenticate('facebook');
+//Naver
+export const naverLogin = passport.authenticate('naver');
 
-export const facebookLoginCallback = (
+export const naverLoginCallback = (
   accessToken,
   refreshToken,
   profile,
-  cb
+  done
 ) => {
-  console.log(accessToken, refreshToken, profile, cb);
+  console.log(accessToken, refreshToken, profile, done);
 };
 
-export const postFacebookLogin = (req, res) => {
+export const postNaverLogin = (req, res) => {
   res.redirect(routes.home);
 };
 

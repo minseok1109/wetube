@@ -17,13 +17,13 @@ import apiRouter from './Routers/apiRouter';
 import routes from './routes';
 import { localsMiddleware } from './middleware';
 import './passport';
+import './Naverpassport';
 import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
 
 const CookieStore = MongoStore(session);
-console.log(__dirname);
 app.use(helmet({ contentSecurityPolicy: false })); // 보안을 위한 middleware
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, '/views'));

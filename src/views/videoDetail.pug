@@ -32,5 +32,7 @@ block content
                         span=comment.text
                         .deleteCommentBtn
                             if loggedUser && String(comment.creator) ===  loggedUser.id
-                                    button(type='submit', data-id=comment.id) ❌
+                                    button(type='submit', data-id=comment.id, onClick="window.location.reload()") ❌
+                        
+
                         
