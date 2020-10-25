@@ -71,13 +71,11 @@ export const postGithubLogin = (req, res) => {
 //Naver
 export const naverLogin = passport.authenticate('naver');
 
-export const naverLoginCallback = (
-  accessToken,
-  refreshToken,
-  profile,
-  done
-) => {
-  console.log(accessToken, refreshToken, profile, done);
+export const naverLoginCallback = (_, __, profile, done) => {
+  const {
+    _json: { id, avatar_url, name },
+  } = profile;
+  console.log(id, avatar_url, name);
 };
 
 export const postNaverLogin = (req, res) => {

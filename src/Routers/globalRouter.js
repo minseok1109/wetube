@@ -36,6 +36,7 @@ globalRouter.get(
   passport.authenticate('github', { failureRedirect: '/login' }),
   postGithubLogin
 );
+
 globalRouter.get(routes.me, getMe);
 
 //naver
