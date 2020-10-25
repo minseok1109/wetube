@@ -12,7 +12,7 @@ passport.use(
     {
       clientID: process.env.NV_ID,
       clientSecret: process.env.NV_SECRET,
-      callbackURL: `https://calm-scrubland-53159.herokuapp.com${routes.naverCallback}`,
+      callbackURL: `https://infinite-chamber-10319.herokuapp.com${routes.naverCallback}`,
     },
     naverLoginCallback
   )
