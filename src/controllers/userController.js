@@ -72,8 +72,28 @@ export const postGithubLogin = (req, res) => {
 
 export const naverLogin = passport.authenticate('naver');
 
-export const naverLoginCallback = (_, __, profile, done) => {
-  console.log(profile, done);
+export const naverLoginCallback = async (_, __, profile, done) => {
+  const {
+    _json: { id, email, profile_image },
+  } = profile;
+  console.log(profile);
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      user.naverId = id;
+      user.save();
+      return done(null, user);
+    }
+    const newUser = await User.create({
+      email,
+      avatarUrl: profile_image,
+      naverId: id,
+    });
+    return done(null, newUser);
+  } catch (error) {
+    console.log(error);
+    return done(error);
+  }
 };
 
 export const postNaverLogin = (req, res) => {
