@@ -74,7 +74,7 @@ export const naverLogin = passport.authenticate('naver');
 
 export const naverLoginCallback = async (_, __, profile, done) => {
   const {
-    _json: { id, email, profile_image },
+    _json: { id, email, profile_image, nickname },
   } = profile;
   console.log(profile);
   try {
@@ -85,6 +85,7 @@ export const naverLoginCallback = async (_, __, profile, done) => {
       return done(null, user);
     }
     const newUser = await User.create({
+      name: nickname,
       email,
       avatarUrl: profile_image,
       naverId: id,
