@@ -10,44 +10,49 @@
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     .header__column {
+      .home {
+        display: flex;
+        align-items: center;
+      }
       i {
         color: #ff0000;
         font-size: 30px;
       }
-      &:nth-child(2) {
+    }
+    &:nth-child(2) {
+      width: 100%;
+      justify-self: center;
+    }
+    &:last-child {
+      justify-self: end;
+    }
+    ul {
+      display: flex;
+      font-weight: 600;
+      text-transform: uppercase;
+      justify-content: flex-end;
+      li {
+        a {
+          color: black;
+        }
+      }
+      li:not(:last-child) {
+        margin-right: 15px;
+      }
+    }
+    form {
+      width: 100%;
+      input {
+        padding: 7px 10px;
         width: 100%;
-        justify-self: center;
-      }
-      &:last-child {
-        justify-self: end;
-      }
-      ul {
-        display: flex;
+        border-radius: 5px;
+        font-size: 14px;
+        color: $black;
         font-weight: 600;
-        text-transform: uppercase;
-        li {
-          a {
-            color: black;
-          }
-        }
-        li:not(:last-child) {
-          margin-right: 15px;
-        }
-      }
-      form {
-        width: 100%;
-        input {
-          padding: 7px 10px;
-          width: 100%;
-          border-radius: 5px;
-          font-size: 14px;
-          color: $black;
-          font-weight: 600;
-          max-width: none;
-          &::placeholder {
-            font-weight: 300;
-            color: rgba(0, 0, 0, 0.7);
-          }
+        max-width: none;
+        &::placeholder {
+          font-weight: 300;
+          color: rgba(0, 0, 0, 0.7);
         }
       }
     }
