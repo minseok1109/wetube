@@ -6,6 +6,14 @@
   .video__comment-number {
     margin-bottom: 5px;
   }
+  #jsCommentList {
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    span {
+      margin-right: 20px;
+    }
+  }
 }
-
-
