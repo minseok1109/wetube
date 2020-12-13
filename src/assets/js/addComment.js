@@ -49,7 +49,9 @@ const handleSubmit = (event) => {
 
 function init() {
   addCommentForm.addEventListener('submit', handleSubmit);
-  deleteBtn.addEventListener('click', deleteComment);
+  if (deleteBtn) {
+    deleteBtn.addEventListener('click', deleteComment);
+  }
 }
 
 if (addCommentForm) {

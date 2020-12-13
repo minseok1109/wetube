@@ -15,9 +15,13 @@ header.header
                     li
                         a(href=routes.login) Log In
                 else 
-                    li
-                        a(href=`/videos${routes.upload}`) Upload
-                    li
-                        a(href=routes.me) Profile
-                    li
-                        a(href=routes.logout) Log Out
+                    .dropDown
+                        img#header_avatar(src=loggedUser.avatarUrl)
+                        #mydropdown.dropdown-content
+                            li
+                                a(href=`/videos${routes.upload}`) Upload
+                            li
+                                a(href=routes.me) Profile
+                            li
+                                a(href=routes.logout) Log Out
+                
