@@ -10,18 +10,18 @@ header.header
         .header__column
             ul
                 if !loggedUser
-                    li
+                    li.log
                         a(href=routes.join) Join
-                    li
+                    li.log
                         a(href=routes.login) Log In
                 else 
                     .dropDown
                         img#header_avatar(src=loggedUser.avatarUrl)
                         #mydropdown.dropdown-content
-                            li
+                            li.logged
                                 a(href=`/videos${routes.upload}`) Upload
-                            li
+                            li.logged
                                 a(href=routes.me) Profile
-                            li
+                            li.logged
                                 a(href=routes.logout) Log Out
                 

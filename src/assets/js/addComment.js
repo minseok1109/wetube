@@ -32,7 +32,6 @@ const sendComment = async (comment) => {
 
 const deleteComment = () => {
   const commentId = deleteBtn.dataset.id;
-  // const videoId = videoInfo.dataset.id;
   axios({
     method: 'POST',
     url: `/api/${commentId}/delete`,
@@ -54,6 +53,6 @@ function init() {
   }
 }
 
-if (addCommentForm) {
+if (addCommentForm && commentList) {
   init();
 }

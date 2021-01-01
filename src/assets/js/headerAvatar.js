@@ -1,4 +1,4 @@
-const headerImage = document.getElementById('header_avatar');
+const dropdown = document.querySelector('.dropDown');
 const dropdownContent = document.querySelector('.dropdown-content');
 
 const dropMenu = () => {
@@ -6,9 +6,10 @@ const dropMenu = () => {
 };
 
 const init = () => {
-  headerImage.addEventListener('click', dropMenu);
+  dropdown.addEventListener('click', dropMenu);
 };
 
-if (headerImage) {
+if (dropdown) {
+  console.log(dropdown);
   init();
 }
