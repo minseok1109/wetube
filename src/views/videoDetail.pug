@@ -3,11 +3,7 @@ block content
     .video-detail__container
         video(src=video.fileUrl, controls=true, width="1300")
         .video__info(data-videoId=video.id)
-            if  loggedUser && video.creator.id === loggedUser.id
-                a(href=routes.editVideo(video.id))
-                    button Edit video
-            h5.video__title=video.title
-            p.video__description=video.description
+            h1.video__title=video.title
             if video.views === 1
                 span.video__views 1 view
             else 

@@ -4,7 +4,8 @@ import Comment from '../models/comment';
 //Home
 export const home = async (req, res) => {
   try {
-    const videos = await Video.find({}).sort({ _id: -1 });
+    const videos = await Video.find({}).populate('creator').sort({ _id: -1 });
+    console.log('videos: ', videos[1]);
     res.render('home', { pageTitle: 'Home', videos });
   } catch (error) {
     res.render('home', { pageTitle: 'Home', videos: [] });
@@ -38,6 +39,8 @@ export const postUpload = async (req, res) => {
     body: { title, description },
     file: { location },
   } = req;
+
+  console.log(req.body, req.file);
   const newVideo = await Video.create({
     fileUrl: location,
     title,

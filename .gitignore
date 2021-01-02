@@ -120,3 +120,4 @@ uploads
 package-lock.json
 .vscode
 build
+.stylelintrc.json

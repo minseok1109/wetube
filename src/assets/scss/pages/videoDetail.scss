@@ -51,13 +51,21 @@
   }
 }
 
-.video__info {
-  button {
+.video-detail__container{
+  width: 900px;
+  video{
+    width: 900px;
+    height: 500px;
+  }
+  .video__info {
+    border-bottom: 1px solid #c0c0c0;
+    button {
     width: 150px;
     margin-top: 15px;
   }
   .video__title {
-    margin: 15px 0px;
+    font-size: 28px;
+    margin: 10px 0px;
   }
   .video__description {
     margin-bottom: 15px;
@@ -66,5 +74,4 @@
     margin: 15px 0px;
   }
 }
-
-  
+  }
